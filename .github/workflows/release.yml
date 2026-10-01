@@ -1,0 +1,106 @@
+name: Build and release plugin
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing numeric release tag (for example v1.1.0)'
+        required: true
+        type: string
+      publish:
+        description: 'Publish or update the release after validation'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.selection.outputs.tag }}
+      commit: ${{ steps.commit.outputs.commit }}
+    steps:
+      - name: Validate selected tag before checkout
+        id: selection
+        env:
+          RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! "$RELEASE_TAG" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]; then
+            echo 'Expected an existing vX.Y.Z tag without leading zeros.' >&2
+            exit 1
+          fi
+          printf 'tag=%s\n' "$RELEASE_TAG" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: refs/tags/${{ steps.selection.outputs.tag }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.10'
+      - name: Record selected release commit
+        id: commit
+        shell: bash
+        run: printf 'commit=%s\n' "$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Validate package
+        run: python3 scripts/validate_plugin.py
+      - name: Test release boundaries
+        run: python3 -m unittest discover -s tests -v
+      - name: Build tagged release assets
+        env:
+          RELEASE_TAG: ${{ steps.selection.outputs.tag }}
+        run: python3 scripts/build_release.py --tag "$RELEASE_TAG" --output "$RUNNER_TEMP/resume-tailor-release"
+      - name: Verify all asset checksums
+        working-directory: ${{ runner.temp }}/resume-tailor-release
+        run: sha256sum -c SHA256SUMS
+      - uses: actions/upload-artifact@v7.0.1
+        with:
+          name: resume-tailor-release
+          path: ${{ runner.temp }}/resume-tailor-release/*
+          if-no-files-found: error
+          retention-days: 14
+
+  publish:
+    needs: build
+    if: github.event_name == 'push' || inputs.publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ needs.build.outputs.commit }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/download-artifact@v8.0.1
+        with:
+          name: resume-tailor-release
+          path: ${{ runner.temp }}/resume-tailor-release
+      - name: Verify artifact checksums
+        working-directory: ${{ runner.temp }}/resume-tailor-release
+        run: sha256sum -c SHA256SUMS
+      - name: Create or update release notes and all assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ needs.build.outputs.tag }}
+          RELEASE_COMMIT: ${{ needs.build.outputs.commit }}
+          ASSET_DIR: ${{ runner.temp }}/resume-tailor-release
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Refuse to publish assets if the tag changed after the build job.
+          [[ "$(git rev-parse "refs/tags/$RELEASE_TAG^{commit}")" == "$RELEASE_COMMIT" ]]
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release edit "$RELEASE_TAG" --title "$RELEASE_TAG" --notes-file "$ASSET_DIR/release-notes.md"
+            gh release upload "$RELEASE_TAG" "$ASSET_DIR"/*.zip "$ASSET_DIR/CHANGELOG.md" "$ASSET_DIR/release-notes.md" "$ASSET_DIR/SHA256SUMS" --clobber
+          else
+            gh release create "$RELEASE_TAG" --verify-tag --title "$RELEASE_TAG" --notes-file "$ASSET_DIR/release-notes.md" "$ASSET_DIR"/*.zip "$ASSET_DIR/CHANGELOG.md" "$ASSET_DIR/release-notes.md" "$ASSET_DIR/SHA256SUMS"
+          fi

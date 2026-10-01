@@ -1,84 +1,25 @@
-# Russian/CIS Resume Conventions
+# Russian-language resume conventions
 
-## Personal Information Rules
-- Photo: expected (professional headshot, business attire)
-- Date of birth: include (DD.MM.YYYY format)
-- Full name: including patronymic if provided
-- Location: full city name
-- Phone: +7 (XXX) XXX-XX-XX format for RU numbers
-- Email and LinkedIn/Telegram: include
-- Marital status: commonly included (optional — ask user)
-- Citizenship: include if relevant for work authorization
+Russian is an output-language choice. Resolve purpose/role, artifact mode, recipient/market, channel, and explicit instructions independently. The language does not establish a country convention.
 
-## Section Order
-1. Contact + Photo (name, DOB, location, phone, email, messengers)
-2. Desired position / target role (equivalent to objective line)
-3. Education (BEFORE experience — traditional CIS ordering)
-4. Professional Experience (reverse chronological)
-5. Key Skills
-6. Certifications
-7. Languages (mandatory section with proficiency levels)
-8. Additional Information (optional: conferences, publications, open source)
+## Personal information and channel
 
-## Length
-- 2 pages: standard
-- 3 pages: acceptable for senior/executive with 15+ years
-- Never 1 page for senior roles (perceived as insufficient detail)
+Photo is the candidate's choice unless the actual recipient specifies otherwise. Do not automatically add date of birth, marital status, patronymic, citizenship, or salary expectations. Include relevant, confirmed work authorization when needed. Use the supplied name, relevant location, and actual phone-country code; do not convert every number to +7.
 
-## Education Section
-- Placed BEFORE experience (CIS convention)
-- University name, faculty/department, degree, graduation year
-- Relevant additional education, courses, MBA
-- More detailed than in EN format
+Languages belong when relevant, requested, or required by a verified platform field. Preserve the supplied proficiency and certification status. An instruction to omit languages or use another level in one PDF applies to that output; it does not rewrite the master profile.
 
-## Executive Summary / Target Role
-- CIS resumes often use "Desired position" header instead of Executive Summary
-- If using summary: 3-5 sentences, formal tone
-- Can include salary expectations (optional — ask user)
-- Tone: professional, formal but not bureaucratic
+Attachments and structured hh.ru fields differ. Check required fields through the relevant platform workflow when requested. Editorial advice does not specify current form behavior.
 
-## Experience Section
-- Reverse chronological
-- Full detail for all significant roles (CIS market expects more detail than US)
-- Each role:
-  - Company name + what the company does (brief context)
-  - Role title + dates (MM.YYYY - MM.YYYY or "по настоящее время")
-  - Key responsibilities (paragraph or bullets)
-  - Achievements with metrics
-- Less aggressive condensation of older roles than EN convention
+## Structure and length
 
-## Achievement Bullet Formula
-```
-[Глагол действия] [что конкретно] [в каком масштабе/контексте], [результат с метрикой]
-```
+Use experience first when a senior candidate's work is the strongest evidence. A target-role line, optional summary, or useful skills block may precede it. Education may lead when more relevant. Education, certifications, and additional information are optional according to evidence, visibility, and instructions.
 
-### Approved Action Verbs (Senior/C-level)
-Спроектировал, Разработал, Внедрил, Масштабировал, Сократил, Увеличил, Построил, Запустил, Возглавил, Оптимизировал, Реорганизовал, Обеспечил
+Aim for 1–2 readable pages. Allow a useful third page for senior evidence; one page is not automatically inadequate. Choose detail by relevance and preserve required visibility. The master profile is not a short application.
 
-### Avoid
-Участвовал в, Занимался, Помогал с, Был вовлечён в
+## Russian editing
 
-## Skills Section
-- Group by functional area
-- Can be more extensive than EN (CIS recruiters expect detailed technical enumeration)
-- Include language proficiency levels:
-  - Russian: native
-  - English: B2/C1/C2 or descriptive (fluent, professional working proficiency)
-  - Other languages if applicable
+Write direct professional Russian with concrete actions. Preserve established names such as Kubernetes, API, and CI/CD; translate ordinary work and outcomes naturally. Expand unfamiliar or ambiguous abbreviations for the reader.
 
-## Date Format
-- DD.MM.YYYY for DOB
-- MM.YYYY for employment dates
-- Consistent throughout
+Prefer a precise sentence such as «Проверил план перехода на новый API gateway» to a bureaucratic description of “ensuring transformation.” «Участвовал» is acceptable when followed by the actual contribution. Retain the source's agency rather than mechanically translating an English verb. Numeric results are optional when unavailable. First person and polite language are natural in a requested cover letter. See [voice and positioning](voice-and-positioning.md).
 
-## CIS-Specific ATS Notes
-- Major platforms: hh.ru, SuperJob, Rabota.ru
-- hh.ru has its own structured resume format — this skill generates a general document
-- Many CIS companies still review resumes manually; ATS rules still help with structure and readability
-- Western companies hiring in CIS region: use EN conventions unless explicitly told otherwise
-
-## Tone & Language
-- Formal but not bureaucratic
-- "Вы" form if addressing reader (rare in resume, more for cover letter)
-- Technical terms: English originals acceptable (Kubernetes, CI/CD, API) — do not force-translate established terms
-- Mixed Russian + English technical vocabulary is normal and expected
+Basis: hh.ru guidance on [structure and length](https://hh.ru/article/kak-sostavit-rezyume), [photo choice and relevance](https://hh.ru/article/25339), and [management resumes](https://hh.ru/article/27467). These are contextual recommendations; details are in the [source register](research-sources.md).

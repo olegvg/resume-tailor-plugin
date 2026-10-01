@@ -1,7 +1,7 @@
 {
   "name": "resume-tailor",
-  "version": "1.0.0",
-  "description": "ATS-optimized resume tailoring skill. Multi-stage workflow for job-specific resume optimization, ATS scoring, and DOCX generation.",
+  "version": "1.1.0",
+  "description": "Evidence-based resume tailoring and candidate profile onboarding. Review job fit, factual reliability and document quality separately; optionally export PDF or DOCX.",
   "author": {
     "name": "Oleg Gaidukov",
     "url": "https://www.linkedin.com/in/ahaidukof/"
@@ -19,11 +19,14 @@
     "job-search",
     "hiring"
   ],
-  "skills": "./skills/",
+  "skills": [
+    "./skills/resume-tailor",
+    "./skills/onboarding"
+  ],
   "interface": {
     "displayName": "Resume Tailor",
-    "shortDescription": "Tailor resumes to job descriptions with ATS scoring",
-    "longDescription": "Analyze a resume and job description, identify match gaps, ask strategic positioning questions, generate an ATS-optimized resume draft, and optionally produce a cover letter and DOCX output.",
+    "shortDescription": "Tailor resumes and organize candidate profiles",
+    "longDescription": "Evidence-based resume tailoring and candidate profile onboarding. Review job fit, factual reliability and document quality separately; optionally export PDF or DOCX.",
     "developerName": "Oleg Gaidukov",
     "category": "Productivity",
     "capabilities": [
@@ -32,12 +35,12 @@
       "Write"
     ],
     "websiteURL": "https://github.com/olegvg/resume-tailor-plugin",
-    "privacyPolicyURL": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
-    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "privacyPolicyURL": "https://github.com/olegvg/resume-tailor-plugin/blob/master/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/olegvg/resume-tailor-plugin/blob/master/LICENSE",
     "defaultPrompt": [
-      "Tailor my resume for this job.",
-      "Score my resume against a JD.",
-      "Draft a targeted cover letter."
+      "Tailor this candidate resume for the supplied job description.",
+      "Create a candidate master profile from these career notes.",
+      "Review this resume for readability and evidence gaps."
     ],
     "brandColor": "#0F766E",
     "screenshots": []

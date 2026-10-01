@@ -1,129 +1,71 @@
-# ATS Rules & Scoring Heuristics
+# ATS interoperability and three separate assessments
 
-## Format Rules
+The useful output is a transparent review of **job fit, factual reliability, and document quality**. None is a universal employer ATS score. Vendor matching features exist, with employer-specific settings; local keyword arithmetic cannot predict them. Primary support and dated limitations are in [research-sources.md](research-sources.md).
 
-### Layout
-- Single column ONLY. No multi-column, no tables for layout, no text boxes
-- No graphics, icons, charts, progress bars for skill levels
-- Contact info in document body (NOT in header/footer — Workday and others skip headers entirely)
-- No "skill bars" or percentage ratings — ATS cannot parse visual skill levels
-- Photos can disrupt ATS parsing (shift text positions, break field extraction). For ATS submissions — no photo. Add photo only for direct submissions in EU/CIS markets where expected
-- No special characters (★ ● ◆) — use standard bullets or dashes
-- No em dashes in dates — use hyphens
+## Distinguish the mechanisms
 
-### Section Headings
-Use these exact standard headings (ATS systems look for them):
-- EN: "Executive Summary", "Core Skills", "Professional Experience", "Education", "Certifications"
-- RU: "Краткое описание", "Ключевые навыки", "Опыт работы", "Образование", "Сертификации"
-- Creative alternatives ("My Journey", "What I Bring") break ATS section detection
+| Mechanism | What it establishes | Appropriate check |
+|---|---|---|
+| File acceptance | Portal accepts an extension and size | Follow the actual recipient instructions. |
+| Parsing | Text and fields are extracted | Verify text order and employer/title/date associations. |
+| Recruiter search | Terms or structured fields can be found | Use recognizable, truthful terminology. |
+| Matching/ranking | A configured product compares qualifications | Report its actual result only if available, naming system and scope. |
+| Screening/rejection | Employer criteria trigger an action | Keep genuine eligibility and application answers separate. |
 
-### File Format (updated 2026)
-- `.pdf` (text-based) — now parses as well as DOCX across Greenhouse, Lever, Workday, iCIMS. Default choice — preserves formatting perfectly
-- `.docx` — still has 23% fewer parsing errors with design tools (Workday data); use when portal explicitly requests it or legacy ATS suspected
-- HTML-to-PDF (weasyprint, Puppeteer, Chrome print) — produces clean text-based PDFs that parse correctly
-- **Test:** if you can highlight and copy text in the PDF, ATS can read it
-- Never: `.pages`, `.odt`, Google Docs links, scanned/image-based PDFs
+Greenhouse documents failed parsing that leaves the original file attached, Boolean search, optional Talent Matching and separate application-answer auto-reject rules. These are different functions, not one universal keyword filter. [Parsing](https://support.greenhouse.io/hc/en-us/articles/200989175-Unsuccessful-resume-parse), [Talent Matching](https://support.greenhouse.io/hc/en-us/articles/41396009937307-Talent-Matching), [auto-reject](https://support.greenhouse.io/hc/en-us/articles/360000653472-Auto-reject).
 
-### Typography
-- Fonts: Calibri, Arial, Garamond, Cambria (10-12pt body, 13-14pt headings)
-- Margins: 0.5-1 inch (0.75 inch recommended)
-- No decorative fonts or unusual typefaces
+## Assessment 1: job fit
 
-### Dates
-- Consistent format throughout the entire document
-- Preferred: MM/YYYY or Month YYYY
-- Never mix formats (e.g., "Jan 2024" in one place and "01/2024" in another)
+Split the JD into explicit required and preferred criteria. Preserve the original meaning, avoid double counting synonyms, and make compound-criterion grouping visible. Label inferred expectations separately; do not silently add them to the required denominator.
 
-### Acronyms
-- Spell out on first use with acronym in parentheses
-- Example: "Application Programming Interface (API)"
-- After first use, acronym only is fine
+Use one internal row per criterion:
 
----
+`Requirement | Importance | Candidate evidence/source | Status | Truthful phrasing/output location`
 
-## Keyword Matching (How Modern ATS Works)
+| Status | Meaning |
+|---|---|
+| Direct | The stated requirement is supported by relevant source evidence. |
+| Transferable | Related evidence is present; the exact required experience is not established. |
+| Gap | A missing requirement is confirmed. |
+| Unverified | Available information does not settle the requirement. |
 
-### Semantic NLP Matching (2025-2026)
-Modern ATS (Greenhouse, Lever, Workday) uses semantic understanding — 91% accuracy vs 67% for keyword-only systems:
-- Greenhouse: semantic matching; "Managed teams" ≈ "Led teams"
-- Workday: NLP-based; maps "project management" → "program coordination" → "initiative leadership"
-- Lever: semantic matching with AI workflows
-- iCIMS: more traditional keyword matching with AI screening add-ons
-- Exact match is still strongest signal, but synonyms and related terms count
-- **Tailored resumes show 115% higher conversion rate** (6.5% vs 2.68% for generic). Job title alignment gives ~3.5x increase in interview rates
+Report counts, for example: “Required: 6/8 direct, 1 transferable, 1 unverified. Preferred: 2/3 direct, 1 gap.” These are evidence counts, not ranking or probability. Keep the grouping stable across revisions; polishing a sentence does not create new experience. Identify critical eligibility separately even if most other requirements are covered.
 
-### Keyword Placement Strategy
-- Every required JD skill must appear in at least 2 places:
-  1. Core Skills section (grouped by category)
-  2. An achievement bullet in Professional Experience
-- Nice-to-have skills: at least 1 mention somewhere
-- Use semantic variants across mentions (not exact repetition)
+If the JD has no preferred criteria, say “none stated”; do not calculate 0/0. If there is no JD, say “JD coverage not applicable” and discuss the requested role direction. No percentage or score is needed for a scoped summary edit unless a relevant evaluation is requested.
 
-### Keyword Density
-- Each keyword: 2-3 appearances max across the whole document
-- More than 3 = keyword stuffing, detected and penalized
-- Job title from JD should be reflected in Executive Summary
+Natural placement of a supported skill in Skills and an experience example can help readers. Projects, education or certifications may also provide evidence; do not invent an employment bullet to create a second mention. Exact JD terminology can help Boolean/phrase searches. Keep useful synonyms, but do not substitute synonyms for every actual product or skill name.
 
-### What NOT to Do
-- Never create an invisible/white-text keyword block — ManpowerGroup detects hidden text in ~100K resumes/year; Greenhouse found 1% of all resumes contain white text. ATS strips formatting on profile pages, exposing hidden text to recruiters
-- Never use prompt injection / hidden AI instructions in resume — 41% of US job seekers tried this; companies actively build detection
-- Never list skills without contextual demonstration in experience
-- Never repeat the same phrase verbatim more than twice
+Normal repeated mentions across different roles are acceptable. Avoid duplication that adds no evidence. No inspected primary documentation establishes a global two-mention requirement, three-mention ceiling or penalty on a fourth occurrence. iCIMS documents a specific rank influenced by term location/frequency, demonstrating that implementations differ. [iCIMS FAQ](https://community.icims.com/articles/FAQ/Searching-Reporting-FAQ).
 
----
+## Assessment 2: factual reliability
 
-## ATS Scoring Formula
+Check the claims that will appear in this output:
 
-Estimated score for pre-output analysis:
+- Titles, employer/public names and employment dates agree with the record; explained concurrent work retains its actual capacity.
+- Numbers preserve what was measured, units, baseline, period and attribution. A target or load test is not production throughput.
+- Action verbs preserve personal, team, advisory and agent-assisted contribution.
+- Skills and credentials are supported; a JD request is not evidence the candidate possesses them.
+- Private aliases, confidential implementation details and disallowed sections are absent from the public output.
+- Scoped preferences do not mutate shared facts or other outputs.
 
-```
-Score = 0.4 * required_skills_coverage
-      + 0.2 * nice_to_have_coverage
-      + 0.2 * achievement_quantification_rate
-      + 0.1 * section_completeness
-      + 0.1 * keyword_distribution
-```
+Use states such as **source-supported**, **conflict**, or **needs confirmation**. Source-supported self-reported experience is not independent external verification. Remove an unsupported final claim, use an accurate narrower claim, or request the material missing fact. Do not replace it with a plausible metric.
 
-### Component Definitions
+There is no mandatory numerical outcome in every bullet. A shipped capability, a documented decision, a real work artifact or a bounded contribution can be precise evidence. State only an action when the outcome is unknown. [MIT guidance](https://capd.mit.edu/resources/resumes/).
 
-**required_skills_coverage:** Count of JD "required" / "must-have" skills found in resume / total required skills
+## Assessment 3: document quality
 
-**nice_to_have_coverage:** Count of JD "preferred" / "nice-to-have" skills found / total nice-to-have skills
+Use **passed / issue / not checked / not applicable**, with a concrete observation for each relevant check. Do not call an untested portal or proprietary ATS “passed”.
 
-**achievement_quantification_rate:** Percentage of experience bullets containing a numeric metric (dollar amount, percentage, team size, time reduction, scale number)
+Portable default: sequential single-column body text, common headings, readable font, ordinary paragraphs and bullets. Place essential contacts in the body. Avoid layout tables, sidebars, text boxes, graphic skill ratings and decorative icons. Greenhouse documents these as parsing risks; this is a conservative default, not proof every parser always fails on them.
 
-**section_completeness:** All standard sections present and non-empty (Contact, Summary, Skills, Experience, Education). Score = present sections / 5
+Use clear headings such as Summary, Skills, Experience and Education with corresponding RU wording. Optional sections do not need to be added to raise completeness. Keep employment dates consistent while retaining known precision; preserve year-only dates when months are unavailable. Expand unusual/ambiguous acronyms when helpful, without mechanically expanding familiar SQL/API/CTO everywhere.
 
-**keyword_distribution:** Keywords appear across multiple sections (not concentrated in one). Score = sections containing JD keywords / total sections with content
+Text-based PDF and DOCX are supported by several inspected vendors. Follow portal-specific instructions; no verified cross-vendor benchmark establishes equal reliability or a universal DOCX advantage. Selectable text is a first check, followed by extraction/read-order and actual autofill checks when accessible. [Lever parsing](https://help.lever.co/s/article/Understanding-Resume-Parsing).
 
-### Score Interpretation
-- 85%+ : Strong match, likely to pass ATS filters
-- 70-84%: Moderate match, may pass depending on competition
-- Below 70%: Weak match, significant gaps to address
+Check names, contacts, Cyrillic/accents, ordinary bullets and text extraction. No blanket Unicode ban is required. Confirm readable pages, no clipped/overlapping text, useful pagination and no unfilled slots or internal review. Reduce redundant content before shrinking typography; 10–12pt body text is a readability starting point, not an ATS cutoff.
 
----
+When an application is actually authorized, verify the portal's autofilled fields. SmartRecruiters documents matching that can prioritize candidate-verified experience/education over parsed data. [June 2026 release](https://www.smartrecruiters.com/resources/article/june-2026-product-release-highlights-more-control-confidence-in-hiring-workflows/).
 
-## Anti-Patterns to Detect and Flag
+## Avoid misleading shortcuts
 
-### Executive Summary
-- NEVER start with: "Seasoned", "Dynamic", "Results-driven", "Passionate", "Highly motivated"
-- NEVER use: "[Title] with N+ years of experience in [broad field]" as opening
-- MUST be specific to the target role, mentioning the actual job title and 1-2 headline metrics
-
-### Content
-- Metrics without business context: "Increased revenue 30%" — of what baseline? what division?
-- Responsibilities-only descriptions without achievement bullets
-- Role descriptions that could apply to anyone in that title (not specific to this person)
-- Unexplained gaps > 6 months (flag to user, don't auto-fill or hide)
-
-### Structure
-- "References available upon request" — remove entirely (outdated convention)
-- Objective statements (replaced by Executive Summary)
-- Skill percentage ratings or proficiency bars
-- Aggregated achievement blocks detached from specific roles/periods
-
-### Tailoring
-- Over-narrowing: stripping relevant domain experience to match JD literally
-- Under-tailoring: generic resume not customized for this specific role
-- Early career elimination: condensing significant roles to nothing just because they're old
-- Ignoring transferable skills from adjacent domains
+Do not use hidden keywords or instructions to an AI reviewer. Do not report invented vendor accuracy percentages, tailoring conversion uplift, keyword penalties, “85% likely pass”, or scores based on how many bullets have numbers. Local text extraction is useful QA, not ATS certification. External scanners report their own model; label the system, date and tested input when using an actual result, and respect authorization for uploading private resumes.

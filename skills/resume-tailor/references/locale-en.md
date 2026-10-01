@@ -1,76 +1,25 @@
-# English/US Resume Conventions
+# English-language resume conventions
 
-## Personal Information Rules
-- NO photo
-- NO date of birth
-- NO marital status
-- NO nationality/citizenship (unless work authorization is relevant)
-- NO full address — city + state only (e.g., "San Francisco, CA")
-- INCLUDE: full name, phone, email, LinkedIn URL
-- LinkedIn URL: ensure profile matches resume content
+Apply English editing after resolving purpose/role, artifact mode, recipient/market, channel, and explicit instructions. Generic resumes and section edits need no JD or questionnaire.
 
-## Section Order
-1. Contact Information (name, phone, email, LinkedIn, location)
-2. Executive Summary (3-4 sentences)
-3. Core Skills (grouped by functional category)
-4. Professional Experience (reverse chronological)
-5. Education
-6. Certifications (if applicable)
+## Recipient and personal information
 
-## Length
-- < 10 years experience: 1 page strongly preferred
-- 10+ years / senior / executive: 2 pages maximum
-- C-level with 15+ years: 2 pages (never 3)
-- Estimated ~400 words per page with standard formatting
+- **US application:** ordinarily omit photo, date of birth, marital status, and unrelated personal details. Include work authorization only when relevant and confirmed.
+- **UK application:** omit irrelevant personal details; use UK spelling when requested or appropriate.
+- **Other markets or international remote:** follow the actual recipient and channel. Europass recommends a professional photograph; this is channel guidance, not a rule for every European or English-language CV. Preserve the user's photo preference.
 
-## Executive Summary
-- 3-4 sentences, NOT a paragraph wall
-- Must mention: target role alignment, primary domain, 1-2 headline metrics, forward-looking intent
-- Tone: confident, direct, metrics-forward
-- Example opening pattern: "[Specific domain] [title] who [concrete achievement]. [Scale/scope statement]. [What you bring to this specific role]."
+Use supplied name, relevant location, and selected contact links. City/country may suit international hiring better than city/state. Residence does not establish nationality, availability, relocation intent, or authorization. Portal fields and attachments can differ.
 
-## Experience Section
-- Reverse chronological (most recent first)
-- Recent 2-3 roles: full detail
-  - Company name + brief context line (what the company does, size, domain)
-  - Role title + dates (MM/YYYY - MM/YYYY or "Present")
-  - 1-2 sentence responsibilities overview
-  - 3-5 achievement bullets with metrics
-- Older roles: condensed
-  - Company, title, dates
-  - 1-2 most relevant achievements only
-- "Previous Experience" grouping acceptable for roles older than 10 years
+## Structure and length
 
-## Achievement Bullet Formula
-```
-[Strong Action Verb] [specific what] [scope/context], [resulting in / achieving] [quantified outcome]
-```
+For relevant senior experience, experience usually leads the evidence. A short summary or skills block may precede it when useful. Education may lead when it is the strongest relevant qualification. Summary, skills, education, certifications, and languages are conditional on relevance, visibility, and instructions.
 
-### Approved Action Verbs (C-level / Senior)
-Led, Architected, Delivered, Scaled, Reduced, Increased, Designed, Implemented, Orchestrated, Drove, Transformed, Built, Established, Launched, Negotiated, Secured
+Aim for 1–2 readable application pages; allow a useful third page or follow explicit recipient instructions. Preserve readable text. Master profiles and academic CVs have different purposes. Detail roles according to relevance, not age alone.
 
-### Avoid
-Responsible for, Helped with, Assisted in, Participated in, Was involved in
+## English editing
 
-## Skills Section
-- Group by functional category (3-5 categories)
-- Each category: 4-6 skills, pipe-delimited or comma-separated
-- Prioritize categories by JD relevance (most relevant first)
-- Example:
-  ```
-  Platform Architecture: Distributed Systems | Microservices | Event-Driven | High-Load
-  Security & Compliance: ISO 27001 | PCI DSS | GDPR | Zero Trust | SOC 2
-  ```
+Use implied first person in experience bullets. Completed actions take past tense, including achievements in a current role. Describe ongoing responsibilities in present tense. Keep spelling and terminology consistent.
 
-## Education
-- After experience section (always)
-- Degree, institution, graduation year
-- No GPA unless exceptional and < 5 years since graduation
-- Relevant coursework: only if directly applicable and < 3 years experience
+Choose verbs that preserve contribution: “Supported the API migration by implementing retry handling” is precise when that was the actual work. Metrics are useful when verified; a shipped capability or documented decision also provides evidence. Preserve titles, public aliases, date precision, and confidentiality. See [voice and positioning](voice-and-positioning.md).
 
-## Tone & Language
-- Active voice throughout
-- Direct, no hedging ("Delivered" not "Helped deliver")
-- Quantify everything possible
-- No first person pronouns ("I", "my") — implied
-- Professional but not stiff
+Basis: [Harvard HES](https://careerservices.fas.harvard.edu/resources/hes-create-impactful-resumes-and-cover-letters/), [Oxford CVs](https://www.careers.ox.ac.uk/cvs), and [Europass](https://europass.europa.eu/en/create-europass-cv). Applicability and verification dates: [source register](research-sources.md).

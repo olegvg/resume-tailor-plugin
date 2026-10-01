@@ -1,0 +1,30 @@
+name: Validate public plugin
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.10'
+      - name: Validate metadata and portable references
+        run: python3 scripts/validate_plugin.py
+      - name: Exercise release boundaries
+        run: python3 -m unittest discover -s tests -v
+      - name: Build a local preview
+        run: python3 scripts/build_release.py --preview --output "$RUNNER_TEMP/resume-tailor-preview"
+      - name: Verify all asset checksums
+        working-directory: ${{ runner.temp }}/resume-tailor-preview
+        run: sha256sum -c SHA256SUMS

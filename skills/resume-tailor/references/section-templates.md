@@ -1,182 +1,71 @@
-# Section Templates
+# Section templates
 
-Slot markers use `[CAPS_SNAKE_CASE]` for values the skill fills in.
+Use these optional building blocks with sourced facts. Choose one output language; remove unused blocks and `[SLOTS]`. See [voice and positioning](voice-and-positioning.md).
 
----
+## Experience
 
-## Executive Summary
-
-### EN Template
-```
-[TARGET_ROLE_TITLE] with [YEARS_RELEVANT] years driving [PRIMARY_DOMAIN] at [SCALE_DESCRIPTION]. [HEADLINE_ACHIEVEMENT_WITH_METRIC]. Brings [KEY_DIFFERENTIATOR_1] and [KEY_DIFFERENTIATOR_2] to [TARGET_COMPANY_CONTEXT_OR_ROLE_TYPE].
-```
-
-Example:
-```
-CTO and platform architect with 12 years driving fintech payment infrastructure at scale (100K+ TPS, $25M+ monthly volume). Built and led engineering orgs of 55+ across three continents, delivering PCI DSS and ISO 27001 certified systems from scratch. Brings deep high-load distributed systems expertise and hands-on security architecture to high-growth payment platforms.
+EN:
+```text
+[PUBLIC_COMPANY_NAME_OR_APPROVED_NDA_DESCRIPTION] — [BRIEF_REAL_CONTEXT]
+[ACTUAL_ROLE_TITLE] | [SOURCE_START_DATE]–[SOURCE_END_DATE]
+[ENGAGEMENT_TYPE_IF_RELEVANT]; [VERIFIED_REMIT]
+- [PERSONAL_ACTION_AND_SPECIFIC_WORK]; [OBSERVED_RESULT_IF_KNOWN].
 ```
 
-Anti-pattern — NEVER generate this:
-```
-Seasoned technology leader with 15+ years of experience in software development and team management. Proven track record of delivering results in fast-paced environments.
-```
-
-### RU Template
-```
-[TARGET_ROLE_TITLE] с [YEARS_RELEVANT]-летним опытом в [PRIMARY_DOMAIN], [SCALE_DESCRIPTION]. [HEADLINE_ACHIEVEMENT_WITH_METRIC]. [KEY_DIFFERENTIATOR_FOR_THIS_ROLE].
+RU:
+```text
+[ПУБЛИЧНОЕ_НАЗВАНИЕ_ИЛИ_NDA_ОПИСАНИЕ] — [РЕАЛЬНЫЙ_КОНТЕКСТ]
+[ФАКТИЧЕСКАЯ_ДОЛЖНОСТЬ] | [НАЧАЛО_ИЗ_ИСТОЧНИКА]–[КОНЕЦ_ИЗ_ИСТОЧНИКА]
+[ТИП_ЗАНЯТОСТИ_ЕСЛИ_НУЖЕН]; [ПОДТВЕРЖДЁННАЯ_ЗОНА_ОТВЕТСТВЕННОСТИ]
+- [ЛИЧНОЕ_ДЕЙСТВИЕ_И_КОНКРЕТНАЯ_РАБОТА]; [ИЗВЕСТНЫЙ_РЕЗУЛЬТАТ].
 ```
 
-Example:
-```
-CTO с 12-летним опытом в финтех-платформах и платёжной инфраструктуре, управление командами до 55+ инженеров. Построил high-load систему обработки 100K+ TPS с нуля, провёл сертификацию PCI DSS и ISO 27001. Экспертиза в распределённых системах, информационной безопасности и масштабировании инженерных организаций.
-```
+Condensed roles retain public name, actual title, source dates, and relevant evidence. No fixed bullet quota applies. A truthful qualitative bullet is sufficient: “Documented service ownership and escalation paths used by the on-call team” / «Описал зоны ответственности сервисов и порядок эскалации для дежурной команды». If usage is unverified, state only that the documentation was created.
 
----
+## Optional sections
 
-## Core Skills
+Use sections when they add relevant evidence and visibility/instructions allow them:
 
-### Grouping Template
-```
-[CATEGORY_NAME_1]: [Skill_1] | [Skill_2] | [Skill_3] | [Skill_4]
-[CATEGORY_NAME_2]: [Skill_1] | [Skill_2] | [Skill_3] | [Skill_4]
-[CATEGORY_NAME_3]: [Skill_1] | [Skill_2] | [Skill_3] | [Skill_4]
-```
+| Section | Illustrative content |
+|---|---|
+| Summary / Кратко | `[ROLE_OR_DIRECTION] + [VERIFIED_SCOPE] + [RELEVANT_EVIDENCE]`. No compulsory metric or forward-looking slogan. |
+| Skills / Навыки | `[USEFUL_CATEGORY]: [CONFIRMED_SKILL], [CONFIRMED_SKILL]`. An unsupported JD skill stays in review. |
+| Education / Образование | `[DEGREE_OR_QUALIFICATION], [FIELD] — [INSTITUTION], [SOURCE_DATE_IF_USEFUL]`. Order by relevance. |
+| Certifications / Сертификаты | `[ACTUAL_CERTIFICATION], [ISSUER], [STATUS_OR_DATE_IF_RELEVANT]`. Preserve expired or training-only distinctions. |
+| Languages / Языки | `[LANGUAGE]: [CONFIRMED_PROFICIENCY]`. Include when relevant, requested, or required by the actual format. |
 
-Rules:
-- 3-5 categories
-- 4-6 skills per category
-- Most JD-relevant category first
-- JD required skills must appear here
-- Pipe-delimited within categories
+## Cover letter or application note
 
-### Common Category Names (EN)
-- Engineering Leadership & Org Design
-- Platform Architecture (Distributed Systems, High-Load)
-- Security & Compliance
-- Payments & Financial Infrastructure
-- DevOps / SRE / Cloud Infrastructure
-- Data Engineering & Analytics
-- Languages & Databases
+Generate only when requested or required. Use short first-person prose with a truthful role-specific reason and contribution. For example: “I'm applying for [ROLE] because [ACTUAL_REASON]. In [PUBLIC_CONTEXT], I [CONFIRMED_CONTRIBUTION].” / «Откликаюсь на [РОЛЬ]: [РЕАЛЬНАЯ_ПРИЧИНА]. В [ПУБЛИЧНЫЙ_КОНТЕКСТ] я [ПОДТВЕРЖДЁННЫЙ_ВКЛАД]». Edit naturally; omit unsupported motivation. “Thank you for considering my application” and «Буду рад обсудить задачи» are acceptable closes.
 
-### Common Category Names (RU)
-- Техническое лидерство и управление командами
-- Архитектура платформ (распределённые системы, high-load)
-- Информационная безопасность и комплаенс
-- Платёжная инфраструктура
-- DevOps / SRE / Облачная инфраструктура
-- Инженерия данных и аналитика
-- Языки программирования и базы данных
+## Review outside the final CV
 
----
+For a full tailoring draft, keep three assessments separate. Strip the legacy separator and everything below it from final CVs and cover letters. For chat-only output, present review separately; no extra file is required.
 
-## Professional Experience — Full Detail Role
+```markdown
+<!-- ATS-ANALYSIS-START -->
 
-### EN Template
-```
-### [COMPANY_NAME] — [COMPANY_CONTEXT]
-**[JOB_TITLE]** | [START_DATE] - [END_DATE]
+## Review — not part of the CV
 
-[1-2 sentence scope: what you owned, team size, key mandate]
+### 1. JD fit
+JD source: [SOURCE]
+Required — Direct: [COUNT]; Transferable: [COUNT]; Gap: [COUNT]; Unverified: [COUNT].
+Preferred — Direct: [COUNT]; Transferable: [COUNT]; Gap: [COUNT]; Unverified: [COUNT].
+| Requirement | Priority / origin | Status | Evidence / limitation |
+|---|---|---|---|
+| [REQUIREMENT] | [REQUIRED/PREFERRED] | [STATUS] | [SOURCE_AND_SCOPE] |
 
-Key Achievements:
-- [ACTION_VERB] [specific what] [scope], resulting in [METRIC]
-- [ACTION_VERB] [specific what] [scope], achieving [METRIC]
-- [ACTION_VERB] [specific what] [scope], reducing/increasing [METRIC]
+### 2. Factual reliability
+| Claim | Evidence | Status | Clarification needed |
+|---|---|---|---|
+| [CLAIM] | [SOURCE] | [SOURCE-SUPPORTED/CONFLICT/NEEDS CONFIRMATION] | [IF_MATERIAL] |
+
+### 3. Document QA
+| Applicable check | Result | Evidence / action |
+|---|---|---|
+| [CHECK_FOR_REQUESTED_ARTIFACT] | [PASSED/ISSUE/NOT CHECKED/N/A] | [OBSERVATION] |
 ```
 
-### RU Template
-```
-### [COMPANY_NAME] — [COMPANY_CONTEXT]
-**[JOB_TITLE]** | [START_DATE] - [END_DATE]
+Without a JD, mark JD fit N/A. For a category with no stated requirements, write “none stated” instead of counts; do not form 0/0. List inferred expectations separately. Distinguish eligibility from general fit. “Source-supported” means traceable to the supplied record, not independently audited. Document QA covers the requested format/channel; unperformed checks remain “Not checked.” No aggregate ATS score or interview probability is produced.
 
-[1-2 предложения: зона ответственности, размер команды, ключевой мандат]
-
-Ключевые достижения:
-- [ГЛАГОЛ] [что конкретно] [масштаб], результат: [МЕТРИКА]
-- [ГЛАГОЛ] [что конкретно] [масштаб], результат: [МЕТРИКА]
-```
-
----
-
-## Professional Experience — Condensed Role
-
-### EN Template
-```
-**[JOB_TITLE]** | [COMPANY_NAME] | [START_DATE] - [END_DATE]
-[1-2 most relevant achievements with metrics in a single line or two bullets]
-```
-
-### RU Template
-```
-**[JOB_TITLE]** | [COMPANY_NAME] | [START_DATE] - [END_DATE]
-[1-2 наиболее релевантных достижения с метриками]
-```
-
----
-
-## Achievement Bullet Formula
-
-### The Pattern
-```
-[Action Verb] [what specifically you did] [within what scope/context], [resulting in] [quantified outcome] [timeframe if applicable]
-```
-
-### Quality Checklist for Each Bullet
-- Has a strong action verb (not "Responsible for")
-- Specifies WHAT was done (not vague)
-- Includes scope/context (team size, system scale, business unit)
-- Contains a quantified metric (%, $, time, count, scale)
-- Metric has business context (not a floating number)
-
-### Examples (EN)
-Good:
-```
-Architected event-driven microservices platform processing 2M+ transactions/day, reducing P95 latency from 800ms to 120ms within 6 months
-```
-
-Bad:
-```
-Worked on microservices architecture and improved system performance
-```
-
-### Examples (RU)
-Good:
-```
-Спроектировал событийно-ориентированную микросервисную платформу с обработкой 2M+ транзакций/день, сократив P95 задержку с 800мс до 120мс за 6 месяцев
-```
-
-Bad:
-```
-Занимался микросервисной архитектурой и улучшением производительности системы
-```
-
----
-
-## Education
-
-### EN Template
-```
-**[DEGREE]** in [FIELD] — [UNIVERSITY_NAME], [GRADUATION_YEAR]
-```
-
-### RU Template
-```
-**[UNIVERSITY_NAME]**, [FACULTY/DEPARTMENT]
-[DEGREE], [FIELD], [GRADUATION_YEAR]
-```
-
----
-
-## Cover Letter (Optional)
-
-### EN Structure (3-4 paragraphs)
-1. **Opening:** Why THIS company specifically (not generic). Reference something specific about the company/role.
-2. **Match 1-2:** Strongest alignment between your experience and their top requirements. Include specific metrics.
-3. **Match 3 + Differentiator:** Another strong match plus what makes you uniquely valuable beyond the JD.
-4. **Close:** Forward-looking, specific next step. NOT "I look forward to hearing from you."
-
-### RU Structure (3-4 paragraphs)
-1. **Вступление:** Почему именно эта компания/роль. Конкретная ссылка на проект или продукт компании.
-2. **Соответствие 1-2:** Сильнейшие пересечения опыта с требованиями вакансии. С метриками.
-3. **Соответствие 3 + уникальность:** Ещё одно пересечение + чем вы отличаетесь от других кандидатов.
-4. **Завершение:** Конкретное предложение следующего шага. НЕ "Буду рад обсудить на собеседовании."
+For full tailoring only, report every excluded role or section with its reason, including visibility, relevance, or explicit exclusion. Never expose `reference-only` entries or internal aliases. For a section edit, review only the changed section.
