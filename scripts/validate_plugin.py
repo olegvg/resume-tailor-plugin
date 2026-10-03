@@ -16,8 +16,8 @@ REFERENCE_NAMES = (
 MANIFESTS = ("plugin.json", ".codex-plugin/plugin.json", ".claude-plugin/plugin.json")
 MARKETPLACES = (".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json")
 ROOT_FILES = MANIFESTS + MARKETPLACES + (
-    "README.md", "README.ru.md", "LICENSE", "PRIVACY.md", "CHANGELOG.md", "AGENTS.md",
-    "docs/releasing.md",
+    "README.md", "README.ru.md", "LICENSE", "PRIVACY.md", "SECURITY.md", "CHANGELOG.md", "AGENTS.md",
+    "docs/releasing.md", "assets/icon.svg",
 )
 VERSION_RE = re.compile(r"(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)")
 EXPECTED_SKILL_PATHS = ["./skills/" + skill for skill in SKILLS]
@@ -53,7 +53,7 @@ def validate_plugin(root: Path) -> list[str]:
         if not path.is_file():
             errors.append(f"Missing required public file: {relative}")
     # Inspect only public component trees; unrelated checkout files never ship.
-    for directory in ("skills", ".codex-plugin", ".claude-plugin", ".agents/plugins"):
+    for directory in ("skills", "assets", ".codex-plugin", ".claude-plugin", ".agents/plugins"):
         top = root / directory
         if top.is_symlink():
             errors.append(f"{directory}: symlink directory is not allowed")
@@ -113,6 +113,12 @@ def validate_plugin(root: Path) -> list[str]:
         check_metadata(data, relative)
         if data is not None and data.get("skills") != EXPECTED_SKILL_PATHS:
             errors.append(f"{relative}: skills must list exactly the two local skill directories")
+        if relative == ".codex-plugin/plugin.json" and data is not None:
+            interface = data.get("interface")
+            icon = interface.get("composerIcon") if isinstance(interface, dict) else None
+            if (not isinstance(icon, str) or not icon.startswith("./assets/")
+                    or icon[2:] not in allowed or not safe_file(icon[2:])):
+                errors.append(f"{relative}: composerIcon must refer to a bundled local asset")
     for relative in MARKETPLACES:
         data = read_json(relative)
         if data is None:

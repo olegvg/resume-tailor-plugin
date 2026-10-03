@@ -157,6 +157,8 @@ Exports exclude review tables and drafting notes. Verify text extraction, source
 
 Candidate records and outputs belong in the selected private workspace. Keep them out of installed assets, caches, public issues and release archives. The plugin provides no backend or telemetry; model hosts and any tools you enable process data under their own policies. Read [PRIVACY.md](PRIVACY.md) before using sensitive records.
 
+For vulnerability reporting and supported code, read [SECURITY.md](SECURITY.md).
+
 The portable root `plugin.json` declares Agent Plugins schema 1.0.0 and discovers the two directories under `skills/`. `.codex-plugin/plugin.json` provides the compatibility overlay; `.claude-plugin/plugin.json` and the two marketplace indexes expose the same plugin identity. This repository is not a claim of listing in an official plugin directory.
 
 Maintainers: see [AGENTS.md](AGENTS.md), [CHANGELOG.md](CHANGELOG.md) and the [release guide](docs/releasing.md). Root `CLAUDE.md` is a maintainer pointer and is not plugin runtime context; native Claude validation may warn about it when validating a source checkout.

@@ -14,7 +14,7 @@ python3 -m unittest discover -s tests -v
 The validator checks matching portable/Codex/Claude versions and metadata,
 exactly two skills, every bundled reference/template, standalone reference
 resolution, identical profile contracts, and the public file inventory.
-Unknown files in skill or manifest component trees and symlink inputs fail.
+Unknown files in skill, asset or manifest component trees and symlink inputs fail.
 Files outside that inventory do not enter ZIPs. Keep all candidate profiles,
 sources and generated resumes in the user's selected workspace.
 
@@ -68,9 +68,10 @@ message instead of silently truncating the changelog.
 Each successful build produces exactly:
 
 - `resume-tailor-plugin-1.1.0.zip`: one `resume-tailor-plugin/` directory with
-  public manifests, docs, license, changelog and both complete skills. The
-  maintainer guide `AGENTS.md` preserves README links; the checkout-only
-  `CLAUDE.md` pointer is omitted to permit strict native package validation.
+  public manifests, docs, license, changelog and both complete skills. It includes
+  the security policy and Codex icon. The maintainer guide `AGENTS.md` preserves
+  README links; the checkout-only `CLAUDE.md` pointer is omitted to permit strict
+  native package validation.
 - `resume-tailor-1.1.0.zip` and `onboarding-1.1.0.zip`: one skill directory per
   archive with `SKILL.md`, all of that skill's references/templates and the
   unmodified MIT `LICENSE`. No sibling skill or maintainer guide is required.

@@ -37,12 +37,12 @@ jobs:
             exit 1
           fi
           printf 'tag=%s\n' "$RELEASE_TAG" >> "$GITHUB_OUTPUT"
-      - uses: actions/checkout@v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: refs/tags/${{ steps.selection.outputs.tag }}
           fetch-depth: 0
           persist-credentials: false
-      - uses: actions/setup-python@v7.0.0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.10'
       - name: Record selected release commit
@@ -60,7 +60,7 @@ jobs:
       - name: Verify all asset checksums
         working-directory: ${{ runner.temp }}/resume-tailor-release
         run: sha256sum -c SHA256SUMS
-      - uses: actions/upload-artifact@v7.0.1
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: resume-tailor-release
           path: ${{ runner.temp }}/resume-tailor-release/*
@@ -74,12 +74,12 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ needs.build.outputs.commit }}
           fetch-depth: 0
           persist-credentials: false
-      - uses: actions/download-artifact@v8.0.1
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
           name: resume-tailor-release
           path: ${{ runner.temp }}/resume-tailor-release

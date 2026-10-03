@@ -43,6 +43,8 @@
       "Review this resume for readability and evidence gaps."
     ],
     "brandColor": "#0F766E",
+    "composerIcon": "./assets/icon.svg",
+    "logo": "./assets/icon.svg",
     "screenshots": []
   }
 }

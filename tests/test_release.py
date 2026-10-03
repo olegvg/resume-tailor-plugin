@@ -67,6 +67,33 @@ class ReleaseTests(unittest.TestCase):
     def test_valid_package(self):
         self.assertEqual([], self.validator.validate_plugin(self.root))
 
+    def test_preview_includes_security_policy_and_icon(self):
+        for name, content in (("SECURITY.md", "# Security\n"),
+                              ("assets/icon.svg", '<svg xmlns="http://www.w3.org/2000/svg"/>')):
+            path = self.root / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(content)
+        result, output = self.build("--preview")
+        self.assertEqual(0, result.returncode, result.stderr)
+        with zipfile.ZipFile(output / "resume-tailor-plugin-1.1.0.zip") as archive:
+            for name in ("SECURITY.md", "assets/icon.svg"):
+                self.assertIn("resume-tailor-plugin/" + name, archive.namelist())
+                self.assertEqual((self.root / name).read_bytes(),
+                                 archive.read("resume-tailor-plugin/" + name))
+
+    def test_unexpected_file_inside_assets_is_rejected(self):
+        assets = self.root / "assets"
+        assets.mkdir(exist_ok=True)
+        (assets / "candidate-record.md").write_text("synthetic private record")
+        self.invalid("Unexpected public file: assets/candidate-record.md")
+
+    def test_icon_must_resolve_to_a_bundled_asset(self):
+        for icon in (None, "./assets/missing.svg", "../outside.svg", "./PRIVACY.md"):
+            with self.subTest(icon=icon):
+                self.edit_json(".codex-plugin/plugin.json",
+                               lambda data: data["interface"].update(composerIcon=icon))
+                self.invalid("composerIcon")
+
     def test_missing_required_reference(self):
         (self.root / "skills/resume-tailor/references/ats-rules.md").unlink()
         self.invalid("ats-rules.md")

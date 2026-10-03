@@ -6,6 +6,7 @@ Curated pending changes are listed below. Release tooling combines them with com
 
 ### Added
 
+- Security reporting policy and a bundled Codex plugin icon for community catalog submission.
 - Standalone `onboarding` skill for creating and updating candidate master profiles from supplied evidence.
 - Identical portable profile contracts bundled with both independently usable skills.
 - Agent Plugins 1.0.0 root manifest, Claude source marketplace, Russian README and package-specific privacy guidance.
@@ -13,6 +14,7 @@ Curated pending changes are listed below. Release tooling combines them with com
 
 ### Changed
 
+- GitHub Actions use immutable commit SHAs for their existing release versions.
 - Resume tailoring now reviews job fit, factual reliability and document quality separately, with no aggregate ATS score or keyword/achievement quotas.
 - Profile routing honors explicit paths and existing schemas; new profiles use the selected workspace's `resume/<candidate-label>/master-profile.md`.
 - Provenance, contribution, date precision, public-name restrictions, visibility and scoped overrides remain attached to candidate facts.
